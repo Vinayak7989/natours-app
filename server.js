@@ -1,5 +1,14 @@
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+const mongoose = require("mongoose");
+
 const app = require("./app");
-const PORT = 3000;
-app.listen(POST, () => {
-  console.log("listening on port " + port);
+
+mongoose.connect(process.env.DATABASE, () => {
+  console.log("Connected to database");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("listening on port " + PORT);
 });
